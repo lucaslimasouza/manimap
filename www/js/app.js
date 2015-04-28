@@ -22,7 +22,7 @@ angular.module('starter', ['ionic'])
     if (toState.data.authenticate && !Parse.User.current()) {
       // User isn’t authenticated
       $state.transitionTo("login");
-      event.preventDefault(); 
+      event.preventDefault();
     }
   });
 })
@@ -32,7 +32,7 @@ angular.module('starter', ['ionic'])
     .state('root', {
       url: '',
       controller: 'rootCtrl',
-      data: { 
+      data: {
         authenticate: false
       }
     })
@@ -52,7 +52,7 @@ angular.module('starter', ['ionic'])
         authenticate: false
       }
     });
-    
+
   // Send to login if the URL was not found
   $urlRouterProvider.otherwise('/login');
 })
@@ -69,7 +69,7 @@ angular.module('starter', ['ionic'])
 .controller('homeCtrl', ['$scope', '$state', function($scope, $state) {
   $scope.logout = function() {
     console.log('Logout');
-    /* 
+    /*
     facebookConnectPlugin.logout(
       function (success) {
         $state.go('login');
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic'])
 
 .controller('loginCtrl', ['$scope', '$state', function($scope, $state) {
   var fbLogged = new Parse.Promise();
-    
+
   var fbLoginSuccess = function(response) {
     if (!response.authResponse){
       fbLoginError("Cannot find the authResponse");
@@ -110,16 +110,16 @@ angular.module('starter', ['ionic'])
   $scope.login = function() {
     console.log('Login');
     if (!window.cordova) {
-      facebookConnectPlugin.browserInit('FACEBOOK_APP_ID');
+      facebookConnectPlugin.browserInit('966206550077543');
     }
     facebookConnectPlugin.login(['email'], fbLoginSuccess, fbLoginError);
-  
+
     fbLogged.then( function(authData) {
       console.log('Promised');
       return Parse.FacebookUtils.logIn(authData);
     })
     .then( function(userObject) {
-      facebookConnectPlugin.api('/me', null, 
+      facebookConnectPlugin.api('/me', null,
         function(response) {
           console.log(response);
           userObject.set('name', response.name);
