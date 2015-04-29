@@ -20,6 +20,21 @@ angular.module('manimap.controllers', [])
   };
 }])
 
+.controller('profileCtrl', ['$scope', '$state','Profile', function($scope, $state, Profile) {
+  $scope.profile = {};
+  $scope.save = function() {
+    console.log('saved', $scope.profile);
+
+    Profile.create($scope.profile)
+    .success(function(data){
+      $state.go('home');
+    })
+    .error(function(data, status, headers, config) {
+      console.log(data);
+    });
+  };
+}])
+
 .controller('loginCtrl', ['$scope', '$state', function($scope, $state) {
   var fbLogged = new Parse.Promise();
 
@@ -68,7 +83,7 @@ angular.module('manimap.controllers', [])
           console.log(error);
         }
       );
-      $state.go('home');
+      $state.go('profile');
     }, function(error) {
       console.log(error);
     });

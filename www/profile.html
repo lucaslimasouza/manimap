@@ -1,0 +1,47 @@
+<ion-header-bar class="bar-stable">
+  <h1 class="title">Perfil</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <div class="padding">
+
+    <ul class="list">
+
+      <li class="item item-checkbox">
+           <label class="checkbox">
+             <input type="checkbox" ng-model="profile.prof" ng-true-value="true" ng-false-value="false">
+           </label>
+           Sou Manicure
+        </li>
+
+    </ul>
+
+    <div class="list">
+
+      <label class="item item-input">
+        <input type="number" placeholder="cel" ng-model="profile.cellphone">
+      </label>
+
+      <label class="item item-input">
+        <input type="text" placeholder="onde mora(rua)?" ng-model="profile.address">
+      </label>
+
+      <label class="item item-input" ng-show="profile.prof">
+        <input type="number" placeholder="qual valor da mão?" ng-model="profile.price.hands">
+      </label>
+
+      <label class="item item-input" ng-show="profile.prof">
+        <input type="number" placeholder="qual valor do pé?" ng-model="profile.price.feet">
+      </label>
+
+    </div>
+    <div class="button-login padding">
+      <button class="button button-block button-positive " ng-click="save()">
+        Salvar
+      </button>
+    </div>
+
+  </div>
+
+</ion-content>

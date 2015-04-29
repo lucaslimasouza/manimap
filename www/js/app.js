@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('manimap', ['ionic','manimap.controllers'])
+angular.module('manimap', ['ionic','manimap.controllers','manimap.services'])
 
 .run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
@@ -44,6 +44,14 @@ angular.module('manimap', ['ionic','manimap.controllers'])
         authenticate: true
       }
     })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'profile.html',
+      controller: 'profileCtrl',
+      data: {
+        authenticate: true
+      }
+    })
     .state('login', {
       url: '/login',
       templateUrl: 'login.html',
@@ -56,5 +64,3 @@ angular.module('manimap', ['ionic','manimap.controllers'])
   // Send to login if the URL was not found
   $urlRouterProvider.otherwise('/login');
 });
-
-

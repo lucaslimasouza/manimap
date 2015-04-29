@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+body{
+  /*background-color: #EC7AB8;*/
+}
+
+.box-login{
+  /*background-color: #EC7AB8;*/
+}
+
+.button-login{
+  width: 100%;
+}
